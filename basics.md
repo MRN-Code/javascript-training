@@ -15,7 +15,7 @@
 * `>`: Greater than
 * `>=`: Greater than or equal to
 
-JavaScript has two data types: primitives and non-primitives. Everything can be treated like an object, mostly.
+JavaScript has two data types: primitives and non-primitives. **Primitives are passed by value** (immutable), and **non-primitives are passed by reference** (mutable). Everything can be treated like an object, mostly.
 
 * Primitives: string, number, boolean, symbol, null, undefined
 * Non-primitives: Object, Function, Array, Date, typed arrays, Map, WeakMap, Set, WeakSet (ES6 stuff)
