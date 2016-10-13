@@ -39,7 +39,59 @@ Some ES6 features that you can use today (depending on version of Node.js):
   ```
 
   See [MDN’s _Destructuring assignment_ article](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) for more examples, and check the [ES6 compatibility table](http://kangax.github.io/compat-table/es6/) to ensure the target version of Node.js supports destructuring.
-* `class` and `extends` sugar (easy prototypal extension)
+* Easy constructor functions with `class` and prototypal inheritance with `extends`:
+
+  These constructs are sugar for constructor functions:
+
+  ```js
+  // Constructor:
+  function MyClass(params) {
+    this.params = params;
+  }
+
+  MyClass.prototype.logParams() {
+    console.log(this.params);
+  };
+
+  // ES6 class:
+  class MyClass {
+    constructor(params) {
+      this.params = params;
+    }
+    logParams() {
+      console.log(this.params);
+    }
+  }
+  ```
+
+  The two `MyClass` constructors are the same. `extends` provides an easy way to “inherit” via prototype modification:
+
+  ```js
+  // Constructor
+  function MyGreatClass(params, greatParams) {
+    MyClass.call(this, params);
+    this.greatParams = greatParams;
+  }
+  MyGreatClass.prototype = Object.create(MyClass.prototype);
+  MyGreatClass.prototype.constructor = MyGreatClass;
+  MyGreatClass.prototype.logGreatParams() {
+    console.log(this.greatParams);
+  };
+
+  // ES6 class:
+  class MyGreatClass extends MyClass {
+    constructor(params, greatParams) {
+      super(params);
+      this.greatParams = greatParams;
+    }
+    logGreatParams() {
+      console.log(this.greatParams);
+    }
+  }
+  ```
+
+  The sugar makes prototypal inheritance quite a bit easier. Read [MDN’s _Classes_ document](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
+
 * Enhanced object literals
 * `const`, `let` and block scoping
 * Arrow functions
