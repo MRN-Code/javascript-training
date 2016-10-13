@@ -25,7 +25,20 @@ Determine a argument's type using `typeof`. (This can backfire when you're testi
 Some ES6 features that you can use today (depending on version of Node.js):
 
 * String templates
-* Destructuring, default params, spread (check LTS compatibility: http://kangax.github.io/compat-table/es6/)
+* Destructuring, default params, spread:
+
+  ```js
+  // Object
+  const { a, b } = { a: 1, b: 2 };
+  console.log(a, b); // 1, 2
+
+  // Array
+  const [c, d, ...e] = [1, 2, 3, 4, 5];
+  console.log(c, d); // 1, 2
+  console.log(e); // [4, 5, 6]
+  ```
+
+  See [MDN’s _Destructuring assignment_ article](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) for more examples, and check the [ES6 compatibility table](http://kangax.github.io/compat-table/es6/) to ensure the target version of Node.js supports destructuring.
 * `class` and `extends` sugar (easy prototypal extension)
 * Enhanced object literals
 * `const`, `let` and block scoping
